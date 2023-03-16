@@ -27,6 +27,10 @@ class Games(Base):
     team_1 = Column(Integer) ## should be team_id fk 
     team_2 = Column(Integer) ## should be team_id fk, different from team_1 
     is_professional = Column(Boolean)
+    duration = Column(Integer)
+    octane_id = Column(String)
+
+
 
 
 class ScoreboardStats(Base):
@@ -37,3 +41,6 @@ class ScoreboardStats(Base):
     assists = Column(Integer)
     demolitions = Column(Integer)
     score = Column(Integer)
+
+    def player_in_table(self,id):
+        Player.where(Player.id == id)

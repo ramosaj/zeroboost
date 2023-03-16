@@ -20,6 +20,13 @@ class OctaneApi:
         uri = self.url + "/players/" + urlencode(kwargs)
         return self.get(uri)
 
+    def get_games(self, **kwargs):
+         uri = self.url + "/games?" + urlencode(kwargs)
+         return self.get(uri)
+
+
+
+
 
     
 

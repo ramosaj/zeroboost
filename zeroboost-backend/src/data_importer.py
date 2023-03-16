@@ -34,8 +34,17 @@ class DataImporter:
                 )
                 self.db_insert(player_object)
 
-    def import_games(self):
+    def import_games_and_scoreboard_stats(self):
         ## get players 
         players = Player.query.all()
         for player in players:  
-            self.api.get_player_stats()
+            request = self.api.get_games(player=player.octane_id)
+            for game in request['games']:
+                id = game['_id']
+                duration = game['duration']
+                date = game['date']
+                blue = game['blue']
+                for players in blue['players']:
+                    pass 
+                    
+                orange = game['orange']
