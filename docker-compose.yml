@@ -1,0 +1,17 @@
+version: '1.0.0'
+services: 
+  frontend: 
+    build: ./zeroboost-frontend
+    ports: 
+      - "3000:5173"
+    volumes: 
+      - ./zeroboost-frontend/src:/zeroboost-frontend/src
+
+  backend: 
+    build: ./zeroboost-backend
+    ports: 
+      - "3001:5172"
+    volumes: 
+      - ./zeroboost-backend:/zeroboost-backend
+    env_file: 
+      - './zeroboost-backend/.env'
