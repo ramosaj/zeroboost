@@ -1,6 +1,6 @@
 FROM python:3.8.0
 
-RUN pip install pandas python-dotenv python-dateutil psycopg2
+RUN pip install pandas python-dotenv python-dateutil psycopg2 alembic
 RUN pip install freezegun pytest pytest-recording  # testing
 RUN pip install flask flask-graphql flask-cors sqlalchemy requests #flask, database
     

@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
 from .src.replay_aggregator import ReplayAggregator
 from flask_cors import cross_origin
-from .db import init_db
+from .db import init_db, db_session
+from .db.models import Player
 
 
 import os
@@ -38,6 +39,12 @@ def create_app(test_config=None):
         app.logger.info('Request seen')
         replay_agg = ReplayAggregator(platform = platform, player_id = player_id)
         return jsonify(replay_agg.get_replays())
+    
+    @app.get('/players')
+    def get_all_players():
+        app.logger.info('Getting players')
+        return jsonify(Player.query.all())
+
 
 
     @app.teardown_appcontext

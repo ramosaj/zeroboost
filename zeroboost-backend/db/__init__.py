@@ -11,8 +11,8 @@ db_session = scoped_session(sessionmaker(autocommit=False,
 
 class Base(DeclarativeBase):
     id = Column(Integer,primary_key=True)
-    created_at = Column(DateTime,server_default=func.sysdate())
-    updated_at = Column(DateTime,server_default=func.sysdate(),onupdate=func.sysdate())
+    created_at = Column(DateTime,server_default=func.now())
+    updated_at = Column(DateTime,server_default=func.now(),onupdate=func.now())
 
 Base.query = db_session.query_property()
 
